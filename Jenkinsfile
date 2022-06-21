@@ -16,7 +16,7 @@ stages{
 		    steps {
 					script {
 						sh '''
-                            docker build -t $DOCKER_ID/$IMAGE_NAME:$IMAGE_TAG .
+                            docker build -t $DOCKER_ID/$REPOSITORY_NAME:$IMAGE_TAG .
 						'''
 					}
 		    }
@@ -28,8 +28,8 @@ stages{
 					script {
 						sh '''
 						   docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
-						   docker push $DOCKER_ID/$IMAGE_NAME:$IMAGE_TAG
-						   docker rmi $DOCKER_ID/$IMAGE_NAME:$IMAGE_TAG
+						   docker push $DOCKER_ID/$REPOSITORY_NAME:$IMAGE_TAG
+						   docker rmi $DOCKER_ID/$REPOSITORY_NAME :$IMAGE_TAG
 						'''
 					}
 		    }
