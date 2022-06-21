@@ -22,7 +22,6 @@ stages{
 		    }
 	}
     	stage ('Docker Push sur dockerhub'){
-         agent any
 		    steps {
 
 					script {
