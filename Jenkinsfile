@@ -4,7 +4,7 @@ pipeline {
         DOCKER_ID = "fallewi"
         IMAGE_NAME = "frontend"
         IMAGE_TAG = "${BUILD_NUMBER}"
-		REPOSITORY_NAME = "catalog"
+	REPOSITORY_NAME = "catalog"
 	}
 agent {
     node {
@@ -39,7 +39,7 @@ stages{
 						script {
 					   sh '''
 						git clone git@github.com:eazytraining/deployment-${REPOSITORY_NAME}.git
-						cd ${REPOSITORY_NAME}
+						cd deployment-${REPOSITORY_NAME}
 						cat values.yaml
 						sed -i "s+tag.*+tag: ${IMAGE_TAG}+g" values.yaml
 						cat values.yaml
@@ -49,7 +49,7 @@ stages{
 						git commit -m "Valeur de l'image mise à jour par Jenkins: ${IMAGE_TAG}"
 						git push origin master
 						cd ..
-						rm -Rf ${REPOSITORY_NAME}
+						rm -Rf deployment-${REPOSITORY_NAME}
 				  '''
 				}
 			  }
