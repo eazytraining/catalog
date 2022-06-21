@@ -28,7 +28,7 @@ stages{
 						sh '''
 						   docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
 						   docker push $DOCKER_ID/$REPOSITORY_NAME:$IMAGE_TAG
-						   docker rmi $DOCKER_ID/$REPOSITORY_NAME :$IMAGE_TAG
+						   docker rmi $DOCKER_ID/$REPOSITORY_NAME:$IMAGE_TAG
 						'''
 					}
 		    }
