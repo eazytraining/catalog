@@ -4,7 +4,6 @@ pipeline {
         IMAGE_TAG = "${BUILD_NUMBER}"
 	REPOSITORY_NAME = "catalog"	
 	}
-	
 agent {
     node {
         label 'docker-agent-meetup'
