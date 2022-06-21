@@ -1,11 +1,10 @@
 pipeline {
-
 	environment {
         DOCKER_ID = "fallewi"
-        IMAGE_NAME = "frontend"
         IMAGE_TAG = "${BUILD_NUMBER}"
-	REPOSITORY_NAME = "catalog"
+	REPOSITORY_NAME = "catalog"	
 	}
+	
 agent {
     node {
         label 'docker-agent-meetup'
@@ -28,12 +27,13 @@ stages{
 
 					script {
 						sh '''
-                           echo "push"
+						   docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
+						   docker push $DOCKER_ID/$IMAGE_NAME:$IMAGE_TAG
+						   docker rmi $DOCKER_ID/$IMAGE_NAME:$IMAGE_TAG
 						'''
 					}
 		    }
 	}
-
     stage('Mise à Jour des manifests pour ARGO') {
 					 steps {
 						script {
